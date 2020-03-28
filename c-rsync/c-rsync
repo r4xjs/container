@@ -1,0 +1,14 @@
+#!/bin/sh
+
+FILE=$(realpath -e "$0")
+BASE_DIR=$(dirname "${FILE}")
+
+sudo docker run \
+    --rm \
+    -it \
+    -p2222:22 \
+    -v "$(pwd):/share" \
+    -v"${BASE_DIR}/keys:/keys" \
+    -v"${BASE_DIR}/conf:/etc/ssh" \
+    c-rsync \
+    /etc/ssh/run-inside-container.sh "$UID"
