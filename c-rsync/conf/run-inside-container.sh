@@ -10,7 +10,8 @@ cat /keys/* > /home/user/.ssh/authorized_keys
 chown -R user:user /home/user/.ssh
 chmod 700 /home/user/.ssh
 chmod 600 /home/user/.ssh/authorized_keys
-printf "xxx\nxxx\n" | passwd user
+# just used to shut up sshd, password login is not allowed
+printf "xxx\nxxx\n" | passwd user > /dev/null
 
 # gen new host keys if none exists
 if ! ls /etc/ssh/ | grep "ssh_host_" > /dev/null; then  

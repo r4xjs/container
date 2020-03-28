@@ -55,7 +55,7 @@ AllowTcpForwarding no
 GatewayPorts no
 X11Forwarding no
 X11UseLocalhost no
-PermitTTY yes
+PermitTTY no
 PrintMotd no # pam does that
 #PrintLastLog no
 TCPKeepAlive yes
