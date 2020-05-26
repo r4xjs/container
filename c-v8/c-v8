@@ -7,6 +7,6 @@ sudo docker run \
     -it \
     --name v8 \
     -v /share:/share \
-    -v "${BASE_DIR}/scripts:/scripts"
+    -v "${BASE_DIR}/scripts:/scripts" \
     c-v8 \
     /usr/bin/zsh
