@@ -17,19 +17,18 @@ RUN mkdir /home/user/git && \
 cd /home/user/git && \
 git clone https://github.com/r4xjs/dotfiles && \
 cd dotfiles && \
-./install.sh && \
+./install.sh
 
 # install more debug stuff
 RUN cd /home/user/git && \
 git clone https://github.com/pwndbg/pwndbg && \
 cd pwndbg && \
-./setup.sh && \
-sudo chmod -R o+rx /usr/local/lib/python3.6/dist-packages
+./setup.sh
 RUN echo "set context-sections ''" >> /home/user/.gdbinit
-RUN pip install pwntools
+RUN pip3 install pwntools
 
 
 # install v8 build stuff
 RUN cd /home/user/git && \
-git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git && \
-echo 'export PATH=$PATH:/home/user/git/depot_tools' >> /home/user/.zshrc
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+RUN echo 'export PATH=$PATH:/home/user/git/depot_tools' >> /home/user/.zshrc
