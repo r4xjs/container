@@ -8,3 +8,7 @@ sudo docker build -t c-v8 .
 #+BEGIN_SRC sh
 ./c-v8
 #+END_SRC
+** on first run
+#+BEGIN_SRC sh
+/scripts/setup.sh <commit>
+#+END_SRC
