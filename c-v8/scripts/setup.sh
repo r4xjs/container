@@ -9,8 +9,7 @@ fi
 commit="$1"
 
 if [ ! -d /share/v8 ]; then
-   mkdir /share/v8
-   pushd /share/v8
+   pushd /share
      fetch v8
    popd
 fi
