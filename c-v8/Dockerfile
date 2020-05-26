@@ -1,8 +1,10 @@
 FROM ubuntu:latest
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 # some tools
 RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y sudo vim git gdb python python3 tmux zsh python-pip python3-pip rr wget curl strace htop socat netcat ipython lsb-core
+RUN apt-get install -y sudo vim git gdb python python3 tmux zsh python3-pip rr wget curl strace htop socat netcat lsb-core
 
 # setup new user
 RUN useradd -s /usr/bin/zsh -m -u 1000 user && \
@@ -22,8 +24,8 @@ RUN cd /home/user/git && \
 git clone https://github.com/pwndbg/pwndbg && \
 cd pwndbg && \
 ./setup.sh && \
-sudo chmod -R o+rx /usr/local/lib/python3.6/dist-packages && \
-echo "set context-sections ''" >> /home/user/.gdbinit
+sudo chmod -R o+rx /usr/local/lib/python3.6/dist-packages
+RUN echo "set context-sections ''" >> /home/user/.gdbinit
 RUN pip install pwntools
 
 

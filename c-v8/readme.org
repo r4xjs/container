@@ -6,5 +6,5 @@ sudo docker build -t c-v8 .
 
 * Run
 #+BEGIN_SRC sh
-sudo docker run -it --name v8 -v /share:/share c-v8 /usr/bin/zsh
+./c-v8
 #+END_SRC
