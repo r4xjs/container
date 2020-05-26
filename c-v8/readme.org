@@ -1,0 +1,10 @@
+* Build
+
+#+BEGIN_SRC sh
+sudo docker build -t c-v8 .
+#+END_SRC
+
+* Run
+#+BEGIN_SRC sh
+sudo docker run -it --name v8 -v /share:/share c-v8 /usr/bin/zsh
+#+END_SRC

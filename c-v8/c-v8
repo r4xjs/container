@@ -1,0 +1,12 @@
+#!/bin/sh
+
+FILE=$(realpath -e "$0")
+BASE_DIR=$(dirname "${FILE}")
+
+sudo docker run \
+    -it \
+    --name v8 \
+    -v /share:/share \
+    -v "${BASE_DIR}/scripts:/scripts"
+    c-v8 \
+    /usr/bin/zsh
