@@ -3,10 +3,24 @@
 FILE=$(realpath -e "$0")
 BASE_DIR=$(dirname "${FILE}")
 
-sudo docker run \
-    -it \
-    --name v8 \
-    -v /share:/share \
-    -v "${BASE_DIR}/scripts:/scripts" \
-    c-v8 \
-    /usr/bin/zsh
+
+if sudo docker ps | grep v8 >/dev/null ; then
+    echo "[+] container is already running"
+
+    sudo docker exec -it v8 /usr/bin/zsh
+elif sudo docker ps -a | grep v8 > /dev/null ; then
+    echo "[+] container is stoped"
+
+    sudo docker start v8
+    sudo docker attach v8
+else
+    echo "[+] start new container"
+
+    sudo docker run \
+        -it \
+        --name v8 \
+        -v /share:/share \
+        -v "${BASE_DIR}/scripts:/scripts" \
+        c-v8 \
+        /usr/bin/zsh
+fi
